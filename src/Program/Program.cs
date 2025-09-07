@@ -1,12 +1,5 @@
-﻿using System;
+﻿using Ucu.Poo.GameOfLife;
 
-namespace Ucu.Poo.GameOfLife
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
-    }
-}
+Board Tablero = new Board(); //Creamos una intancia de tablero
+Cell Celulas = new Cell(Tablero.leer_archivo()); //Creamos una intancia de celulas
+Tablero.Print(Tablero.leer_archivo(), Celulas); //Imprimos el tablero
