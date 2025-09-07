@@ -33,8 +33,33 @@ public class Cell
                         }
                     }
                 }
-                //Falta terminar condicionales de vida o muerte...
-                
+                if(_gameBoard[x,y]) 
+                {
+                        aliveNeighbors--;
+                }
+                if (_gameBoard[x,y] && aliveNeighbors < 2) //Si vecinos vivos menor a 2
+                {
+                    //Celula muere por baja población
+                    cloneboard[x,y] = false;
+                }
+                else if (_gameBoard[x,y] && aliveNeighbors > 3) //Si vecinos vivos mayor a 3
+                {
+                    //Celula muere por sobrepoblación
+                    cloneboard[x,y] = false;
+                }
+                else if (!_gameBoard[x,y] && aliveNeighbors == 3) //Si vecinos vivos igual a 3
+                {
+                    //Celula nace por reproducción
+                        cloneboard[x,y] = true; 
+                }
+                else //Otros casos
+                {
+                    //Celula mantiene el estado que tenía
+                    cloneboard[x,y] = _gameBoard[x,y];
+                }
             }
         }
-    }
+        _gameBoard = cloneboard; //aplicamos los cambios
+        return _gameBoard; //retornamos los cambios
+    }//---------------------------------------------------------
+}
