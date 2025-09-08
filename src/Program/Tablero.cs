@@ -23,4 +23,34 @@ public class Board //-----------------------------------------------------------
         return board; 
     }
 
+    public void Print(bool[,] tablero_,Cell celulas)//Mostrar tablero
+    {
+     
+        while (true) //Bucle infinito
+        {
+            bool[,] tablero = tablero_;
+            int width = tablero.GetLength(0);//variabe que representa el ancho del tablero
+            int height = tablero.GetLength(1); 
+            Console.Clear();
+            StringBuilder s = new StringBuilder();
+            for (int y = 0; y<height;y++) //revisamos el eje Y
+            {
+                for (int x = 0; x<width; x++) //revisamos el eje X
+                {
+                    if(tablero[x,y]) //Si true:
+                    {
+                        s.Append("|X|");
+                    }
+                    else //Si false:
+                    {
+                        s.Append("___");
+                    }
+                }
+                s.Append("\n"); //saltamos a la siguiente linea
+            }
+            Console.WriteLine(s.ToString()); //Imprimimos tablero
+            tablero_ = celulas.NextGeneration(); //Igualamos tablero_ a cloneboard
+            Thread.Sleep(300); //Ponemos un delay
+        }
+    }
 }//---------------------------------------------------------------------------------
