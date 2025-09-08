@@ -1,4 +1,7 @@
-﻿namespace Ucu.Poo.GameOfLife;
+﻿using System;
+using System.Threading;
+
+namespace Ucu.Poo.GameOfLife;
 using System.Text;
 
 using System.IO;
